@@ -1,4 +1,4 @@
-const schema = require("../BloodBank/models/bloodBankEntry");
+const schema = require("../models/bloodBankEntry");
 const bankEntries = [];
 let idx = 1;
 
