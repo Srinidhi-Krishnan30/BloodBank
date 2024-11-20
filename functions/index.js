@@ -36,9 +36,10 @@ const changeUser = (req,res) => {
     if(!entry){res.status(404).json({error: "User not found"});}
 
     const{donorName, age, bloodType, contactInfo, quantity, collectionDate, expirationDate, status} = req.body;
-    if(donorName) entry.name = donorName;
-    if(bloodType) entry.bldgrp = bloodType;
-    if(contactInfo) entry.contact = contactInfo;
+    if(donorName) entry.donorName = donorName;
+    if (age) entry.age = age;
+    if(bloodType) entry.bloodType = bloodType;
+    if(contactInfo) entry.contactInfo = contactInfo;
     if(quantity) entry.qty = quantity;
     if(collectionDate) entry.collectionDate = collectionDate;
     if(expirationDate) entry.expirationDate = expirationDate;
@@ -48,11 +49,11 @@ const changeUser = (req,res) => {
 //function to delete a user - DELETE Method
 const deleteUser = (req,res) => {
     const {id} = req.params;
-    const {idx} = bankEntries.findIndex((e) => e.id == id);
-    if(idx == -1){res.status(404).json({error: "User not found"});}
+    const idx = bankEntries.findIndex((e) => e.id == id);
+    if(idx === -1){res.status(404).json({error: "User not found"});}
 
     bankEntries.splice(idx,1);
-    res.status(204).send();
+    res.status(204).json({message: "User Removed"});
 };
 // Implementing pagination
 const getPaginatedEntries = (req, res) => {
@@ -67,7 +68,7 @@ const getPaginatedEntries = (req, res) => {
 //function to implement searching algorithm
 const searchUser = (req,res) =>{
     const{bloodType, status, donorName } = req.body;
-    let filteredEntries = bloodBankEntries;
+    let filteredEntries = bankEntries;
 
     if (bloodType) {
         filteredEntries = filteredEntries.filter((e) => e.bloodType === bloodType);
