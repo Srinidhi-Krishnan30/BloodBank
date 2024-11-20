@@ -26,7 +26,7 @@ A comprehensive Blood Bank API built with Node.js and Express to manage blood do
     npm init
     npm install express
 4. Start the server
-    node index.js
+    node server.js
 
 ## File Structure
 
