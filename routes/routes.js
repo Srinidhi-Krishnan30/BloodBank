@@ -1,4 +1,4 @@
-const express = require("exporess");
+const express = require("express");
 const {addEntry,getallUsers,getUserById,
     changeUser,deleteUser,getPaginatedEntries,searchUser} = require("../functions/index");
     
