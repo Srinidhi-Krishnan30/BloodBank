@@ -11,3 +11,4 @@ class BloodBankEntry{
         this.status = status;
     }
 }
+module.exports = {BloodBankEntry};
